@@ -25,14 +25,19 @@ export function Header() {
       className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border/50"
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo */}
+        <div className="flex items-center justify-between h-16 md:justify-start">
+          {/* Logo - Icon only on mobile, full logo on desktop */}
           <Link href="/" className="flex items-center">
-            <Logo size="md" />
+            <div className="md:hidden">
+              <Logo size="md" showText={false} />
+            </div>
+            <div className="hidden md:block">
+              <Logo size="md" showText={true} />
+            </div>
           </Link>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
+          {/* Desktop Navigation - Centered */}
+          <nav className="hidden md:flex items-center justify-center flex-1 space-x-8">
             {navItems.map((item) => (
               <Link
                 key={item.name}
@@ -45,10 +50,10 @@ export function Header() {
           </nav>
 
           {/* Desktop CTA Button */}
-          <div className="hidden md:flex items-center space-x-4">
+          <div className="hidden md:flex items-center">
             <Link href="/contact">
               <Button
-                className="apple-button bg-primary hover:bg-primary/90 text-primary-foreground"
+                className="premium-button bg-primary hover:bg-primary/90 text-primary-foreground"
                 size="sm"
               >
                 Get Started
@@ -78,9 +83,9 @@ export function Header() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden bg-background/95 backdrop-blur-md border-t border-border/50"
+            className="md:hidden premium-card border-t border-border/50 rounded-none"
           >
-            <div className="px-4 py-6 space-y-4">
+            <div className="px-4 py-6 space-y-6">
               {navItems.map((item) => (
                 <Link
                   key={item.name}
@@ -94,7 +99,7 @@ export function Header() {
               <div className="pt-4">
                 <Link href="/contact" onClick={() => setIsMenuOpen(false)}>
                   <Button
-                    className="apple-button bg-primary hover:bg-primary/90 text-primary-foreground w-full"
+                    className="premium-button bg-primary hover:bg-primary/90 text-primary-foreground w-full"
                     size="sm"
                   >
                     Get Started

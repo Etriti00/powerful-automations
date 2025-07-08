@@ -89,21 +89,58 @@ export default function ContactPage() {
     <>
       <Header />
       
-      <div className="min-h-screen bg-background pt-16">
+      <div className="min-h-screen bg-gradient-to-br from-background via-primary/2 to-background pt-16 relative">
+        {/* Unified Background Layer - Single layer for entire page */}
+        <div className="fixed inset-0 overflow-hidden pointer-events-none">
+          {/* Floating gradient blobs */}
+          <div className="floating-gradient floating-gradient-1"></div>
+          <div className="floating-gradient floating-gradient-2"></div>
+          <div className="floating-gradient floating-gradient-3"></div>
+          
+          {/* Additional animated elements */}
+          <motion.div
+            className="absolute top-1/4 right-1/4 w-80 h-80 bg-gradient-to-br from-purple-400/15 to-pink-400/15 rounded-full blur-3xl"
+            animate={{
+              x: [0, 80, -40, 0],
+              y: [0, -40, 80, 0],
+              scale: [1, 1.2, 0.8, 1],
+            }}
+            transition={{
+              duration: 25,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
+          <motion.div
+            className="absolute bottom-1/3 left-1/4 w-72 h-72 bg-gradient-to-br from-blue-400/15 to-orange-400/15 rounded-full blur-3xl"
+            animate={{
+              x: [0, -60, 30, 0],
+              y: [0, 60, -30, 0],
+              scale: [1, 0.9, 1.1, 1],
+            }}
+            transition={{
+              duration: 28,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 5,
+            }}
+          />
+        </div>
+
         {/* Hero Section */}
-        <section className="pt-6 sm:pt-8 pb-12 sm:pb-16 bg-gradient-to-br from-primary/5 to-secondary/20">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="pt-6 sm:pt-8 pb-12 sm:pb-16 relative apple-section">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               className="text-center max-w-3xl mx-auto"
             >
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-4 sm:mb-6">
+              <h1 className="hero-headline text-3xl sm:text-4xl md:text-5xl lg:text-6xl mb-4 sm:mb-6">
                 Let&apos;s Build Something
                 <span className="text-primary"> Amazing</span>
               </h1>
-              <p className="text-base sm:text-lg md:text-xl text-muted-foreground mb-6 sm:mb-8 px-4">
+              <p className="body-large text-base sm:text-lg md:text-xl text-muted-foreground mb-6 sm:mb-8 px-4">
                 Ready to transform your business with custom automation? 
                 We&apos;re here to help you streamline your workflow and boost productivity.
               </p>
@@ -112,8 +149,8 @@ export default function ContactPage() {
         </section>
 
         {/* Contact Form Section */}
-        <section className="py-8 sm:py-12 lg:py-16">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="py-8 sm:py-12 lg:py-16 relative apple-section">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
               {/* Contact Form */}
               <motion.div
@@ -121,7 +158,7 @@ export default function ContactPage() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6 }}
               >
-                <Card className="shadow-xl border-0 h-full">
+                <Card className="premium-card shadow-xl border-0 h-full">
                   <CardHeader className="px-4 sm:px-6">
                     <CardTitle className="text-xl sm:text-2xl font-bold">Get Your Free Consultation</CardTitle>
                     <CardDescription className="text-sm sm:text-base">
@@ -236,7 +273,7 @@ export default function ContactPage() {
                       <Button
                         type="submit"
                         disabled={isSubmitting}
-                        className="apple-button w-full bg-primary hover:bg-primary/90 text-primary-foreground disabled:opacity-50 disabled:cursor-not-allowed"
+                        className="premium-button w-full bg-primary hover:bg-primary/90 text-primary-foreground disabled:opacity-50 disabled:cursor-not-allowed"
                         size="lg"
                       >
                         {isSubmitting ? (
@@ -260,7 +297,7 @@ export default function ContactPage() {
                 transition={{ duration: 0.6, delay: 0.2 }}
                 className="h-full"
               >
-                <Card className="shadow-xl border-0 h-full">
+                <Card className="premium-card shadow-xl border-0 h-full">
                   <CardHeader className="px-4 sm:px-6">
                     <CardTitle className="text-xl sm:text-2xl font-bold">Get in Touch</CardTitle>
                     <CardDescription className="text-sm sm:text-base">
@@ -272,36 +309,36 @@ export default function ContactPage() {
 
                     <div className="space-y-4 sm:space-y-6">
                   <div className="flex items-start gap-3 sm:gap-4">
-                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-blue-500/10 rounded-full flex items-center justify-center flex-shrink-0">
-                      <Mail className="w-5 h-5 sm:w-6 sm:h-6 text-blue-500" />
+                    <div className="w-14 h-14 sm:w-16 sm:h-16 glass-card rounded-2xl flex items-center justify-center flex-shrink-0">
+                      <Mail className="w-7 h-7 sm:w-8 sm:h-8 text-blue-500" />
                     </div>
                     <div className="flex-1">
-                      <h4 className="font-semibold text-foreground text-sm sm:text-base">Email</h4>
-                      <p className="text-muted-foreground text-sm sm:text-base break-all">info@powerautomations.net</p>
-                      <p className="text-xs sm:text-sm text-muted-foreground mt-1">We&apos;ll respond within 24 hours</p>
+                      <h4 className="font-semibold text-foreground text-base sm:text-lg">Email</h4>
+                      <p className="text-muted-foreground text-base sm:text-lg break-all">info@powerautomations.net</p>
+                      <p className="text-sm sm:text-base text-muted-foreground mt-2">We&apos;ll respond within 24 hours</p>
                     </div>
                   </div>
 
 
                   <div className="flex items-start gap-3 sm:gap-4">
-                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-orange-500/10 rounded-full flex items-center justify-center flex-shrink-0">
-                      <MapPin className="w-5 h-5 sm:w-6 sm:h-6 text-orange-500" />
+                    <div className="w-14 h-14 sm:w-16 sm:h-16 glass-card rounded-2xl flex items-center justify-center flex-shrink-0">
+                      <MapPin className="w-7 h-7 sm:w-8 sm:h-8 text-orange-500" />
                     </div>
                     <div className="flex-1">
-                      <h4 className="font-semibold text-foreground text-sm sm:text-base">Location</h4>
-                      <p className="text-muted-foreground text-sm sm:text-base">Woodstock, Vermont</p>
-                      <p className="text-xs sm:text-sm text-muted-foreground mt-1">Remote-first company</p>
+                      <h4 className="font-semibold text-foreground text-base sm:text-lg">Location</h4>
+                      <p className="text-muted-foreground text-base sm:text-lg">Woodstock, Vermont</p>
+                      <p className="text-sm sm:text-base text-muted-foreground mt-2">Remote-first company</p>
                     </div>
                   </div>
 
                   <div className="flex items-start gap-3 sm:gap-4">
-                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-purple-500/10 rounded-full flex items-center justify-center flex-shrink-0">
-                      <Clock className="w-5 h-5 sm:w-6 sm:h-6 text-purple-500" />
+                    <div className="w-14 h-14 sm:w-16 sm:h-16 glass-card rounded-2xl flex items-center justify-center flex-shrink-0">
+                      <Clock className="w-7 h-7 sm:w-8 sm:h-8 text-purple-500" />
                     </div>
                     <div className="flex-1">
-                      <h4 className="font-semibold text-foreground text-sm sm:text-base">Response Time</h4>
-                      <p className="text-muted-foreground text-sm sm:text-base">&lt; 24 hours</p>
-                      <p className="text-xs sm:text-sm text-muted-foreground mt-1">Usually within 2 hours</p>
+                      <h4 className="font-semibold text-foreground text-base sm:text-lg">Response Time</h4>
+                      <p className="text-muted-foreground text-base sm:text-lg">&lt; 24 hours</p>
+                      <p className="text-sm sm:text-base text-muted-foreground mt-2">Usually within 2 hours</p>
                     </div>
                   </div>
                     </div>
@@ -317,26 +354,26 @@ export default function ContactPage() {
               transition={{ duration: 0.6, delay: 0.4 }}
               className="mt-12 lg:mt-16"
             >
-              <Card className="shadow-xl border-0">
+              <Card className="premium-card shadow-xl border-0">
                 <CardHeader className="px-6 sm:px-8 text-center">
-                  <CardTitle className="text-xl sm:text-2xl">Quick Questions?</CardTitle>
-                  <CardDescription className="text-sm sm:text-base">
+                  <CardTitle className="section-headline text-xl sm:text-2xl">Quick Questions?</CardTitle>
+                  <CardDescription className="body-large text-sm sm:text-base">
                     Get instant answers to common questions about our automation services.
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="px-6 sm:px-8">
                   <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
-                    <div className="space-y-3">
-                      <h5 className="font-semibold text-foreground text-base sm:text-lg">How long does a typical project take?</h5>
-                      <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">Most automations are completed within 2-4 weeks, depending on complexity and scope.</p>
+                    <div className="space-y-4">
+                      <h5 className="font-semibold text-foreground text-lg sm:text-xl">How long does a typical project take?</h5>
+                      <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">Most automations are completed within 2-4 weeks, depending on complexity and scope.</p>
                     </div>
-                    <div className="space-y-3">
-                      <h5 className="font-semibold text-foreground text-base sm:text-lg">Do you offer ongoing support?</h5>
-                      <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">Yes, we provide 30 days of free support and flexible maintenance options for long-term success.</p>
+                    <div className="space-y-4">
+                      <h5 className="font-semibold text-foreground text-lg sm:text-xl">Do you offer ongoing support?</h5>
+                      <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">Yes, we provide 30 days of free support and flexible maintenance options for long-term success.</p>
                     </div>
-                    <div className="space-y-3">
-                      <h5 className="font-semibold text-foreground text-base sm:text-lg">What types of automations do you build?</h5>
-                      <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">We create custom automations for appointment scheduling, lead capture, review collection, and voice AI assistants.</p>
+                    <div className="space-y-4">
+                      <h5 className="font-semibold text-foreground text-lg sm:text-xl">What types of automations do you build?</h5>
+                      <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">We create custom automations for appointment scheduling, lead capture, review collection, and voice AI assistants.</p>
                     </div>
                   </div>
                 </CardContent>

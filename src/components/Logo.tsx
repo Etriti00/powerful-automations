@@ -5,9 +5,10 @@ import { motion } from "framer-motion";
 interface LogoProps {
   size?: "sm" | "md" | "lg";
   className?: string;
+  showText?: boolean;
 }
 
-export function Logo({ size = "md", className = "" }: LogoProps) {
+export function Logo({ size = "md", className = "", showText = true }: LogoProps) {
   const sizeClasses = {
     sm: "w-8 h-8 text-sm",
     md: "w-10 h-10 text-lg",
@@ -115,18 +116,25 @@ export function Logo({ size = "md", className = "" }: LogoProps) {
         </svg>
       </div>
       
-      <div className="flex flex-col">
-        <motion.span
-          className={`font-semibold bg-gradient-to-r from-[#007AFF] to-[#5856D6] bg-clip-text text-transparent ${
-            size === "sm" ? "text-sm" : size === "md" ? "text-lg" : "text-xl"
-          }`}
-          initial={{ opacity: 0, x: -10 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: 0.2 }}
-        >
-          Power Automations
-        </motion.span>
-      </div>
+      {showText && (
+        <div className="flex flex-col">
+          <motion.span
+            className={`font-bold bg-gradient-to-r from-[#007AFF] to-[#5856D6] bg-clip-text text-transparent ${
+              size === "sm" ? "text-sm" : size === "md" ? "text-lg" : "text-xl"
+            }`}
+            style={{ 
+              fontFamily: 'Figtree, sans-serif',
+              fontWeight: 800,
+              letterSpacing: '-0.02em'
+            }}
+            initial={{ opacity: 0, x: -10 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.2 }}
+          >
+            Power Automations
+          </motion.span>
+        </div>
+      )}
     </motion.div>
   );
 }
