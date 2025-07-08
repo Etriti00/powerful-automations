@@ -22,9 +22,63 @@ export default function ContactPage() {
     message: "",
   });
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<{
+    type: 'success' | 'error' | null;
+    message: string;
+  }>({ type: null, message: '' });
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
+    setIsSubmitting(true);
+    setSubmitStatus({ type: null, message: '' });
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          companyName: formData.company,
+          serviceOfInterest: formData.service,
+          projectDetails: formData.message,
+        }),
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        setSubmitStatus({
+          type: 'success',
+          message: 'Thank you! Your message has been sent successfully. We\'ll get back to you within 24 hours.',
+        });
+        // Reset form
+        setFormData({
+          name: "",
+          email: "",
+          company: "",
+          phone: "",
+          service: "",
+          budget: "",
+          message: "",
+        });
+      } else {
+        setSubmitStatus({
+          type: 'error',
+          message: result.error || 'Something went wrong. Please try again.',
+        });
+      }
+    } catch (error) {
+      setSubmitStatus({
+        type: 'error',
+        message: 'Network error. Please check your connection and try again.',
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (field: string, value: string) => {
@@ -75,6 +129,17 @@ export default function ContactPage() {
                     </CardDescription>
                   </CardHeader>
                   <CardContent className="px-4 sm:px-6">
+                    {/* Status Message */}
+                    {submitStatus.type && (
+                      <div className={`p-4 rounded-lg mb-6 ${
+                        submitStatus.type === 'success' 
+                          ? 'bg-green-50 border border-green-200 text-green-800' 
+                          : 'bg-red-50 border border-red-200 text-red-800'
+                      }`}>
+                        <p className="text-sm font-medium">{submitStatus.message}</p>
+                      </div>
+                    )}
+
                     <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
                       <div className="grid sm:grid-cols-2 gap-3 sm:gap-4">
                         <div className="space-y-2">
@@ -170,10 +235,18 @@ export default function ContactPage() {
 
                       <Button
                         type="submit"
-                        className="apple-button w-full bg-primary hover:bg-primary/90 text-primary-foreground"
+                        disabled={isSubmitting}
+                        className="apple-button w-full bg-primary hover:bg-primary/90 text-primary-foreground disabled:opacity-50 disabled:cursor-not-allowed"
                         size="lg"
                       >
-                        Send Message
+                        {isSubmitting ? (
+                          <>
+                            <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
+                            Sending...
+                          </>
+                        ) : (
+                          'Send Message'
+                        )}
                       </Button>
                     </form>
                   </CardContent>

@@ -7,7 +7,7 @@ const contactSchema = z.object({
   email: z.string().email("Please enter a valid email address"),
   companyName: z.string().optional(),
   serviceOfInterest: z.string().min(1, "Please select a service"),
-  projectDetails: z.string().optional(),
+  projectDetails: z.string().min(1, "Please provide project details"),
 });
 
 export async function POST(request: NextRequest) {
