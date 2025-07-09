@@ -16,12 +16,12 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://powerautomations.net"),
-  title: "Power Automations - AI Business Automation Solutions",
-  description: "Transform your business with AI-powered automation solutions. Custom workflow automation, appointment scheduling, voice AI agents, and intelligent business processes that save time and increase revenue.",
+  title: "Power Automations – AI & N8N Workflows for Small Businesses",
+  description: "We build custom AI-powered automation systems using N8N to help businesses like clinics, salons, and restaurants streamline bookings, emails, and client communication.",
   keywords: "business automation, AI automation, workflow automation, process automation, appointment scheduling automation, voice AI agents, custom business automation, automated workflows, business process automation, intelligent automation, automation solutions, productivity automation, small business automation, enterprise automation",
   openGraph: {
-    title: "Power Automations - AI Business Automation Solutions",
-    description: "Transform your business with AI-powered automation solutions that save time and increase revenue through intelligent workflow automation.",
+    title: "Power Automations – AI & N8N Workflows for Small Businesses",
+    description: "We build custom AI-powered automation systems using N8N to help businesses like clinics, salons, and restaurants streamline bookings, emails, and client communication.",
     type: "website",
     url: "https://powerautomations.net",
     siteName: "Power Automations",
@@ -34,8 +34,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Power Automations - AI Business Automation Solutions",
-    description: "Transform your business with AI-powered automation solutions that save time and increase revenue.",
+    title: "Power Automations – AI & N8N Workflows for Small Businesses",
+    description: "We build custom AI-powered automation systems using N8N to help businesses like clinics, salons, and restaurants streamline bookings, emails, and client communication.",
     images: ["/og-image.jpg"],
   },
   robots: {

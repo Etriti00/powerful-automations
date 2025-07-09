@@ -73,9 +73,9 @@ export default function Home() {
               transition={{ duration: 0.8 }}
               className="hero-headline text-4xl sm:text-5xl lg:text-6xl xl:text-7xl mb-6"
             >
-              AI-Powered Business Automation.
+              Automate Bookings, Emails & Customer Follow-Ups
               <br />
-              <span className="text-primary">Transform Your Operations.</span>
+              <span className="text-primary">— with AI-Powered Workflows</span>
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 30 }}
@@ -83,9 +83,8 @@ export default function Home() {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="body-large text-lg sm:text-xl lg:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto"
             >
-              We build intelligent business automation solutions that streamline workflows, 
-              automate repetitive tasks, and integrate AI-powered voice agents to save time, 
-              reduce costs, and increase revenue for your business.
+              We help clinics, salons, restaurants, and service businesses save hours and grow revenue 
+              with one-time automation systems built using N8N + AI.
             </motion.p>
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -98,7 +97,7 @@ export default function Home() {
                   size="lg"
                   className="premium-button bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-6 text-lg"
                 >
-                  Get Free Consultation
+                  Get a Free Demo
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
               </Link>
@@ -110,6 +109,47 @@ export default function Home() {
       {/* Stats Section */}
       <StatsSection />
 
+      {/* Testimonials Section */}
+      <section className="apple-section relative">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="section-headline text-3xl sm:text-4xl mb-4">
+              What Our Clients Are Saying
+            </h2>
+          </motion.div>
+          
+          <div className="max-w-4xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              viewport={{ once: true }}
+              className="premium-card rounded-2xl p-8 sm:p-12 text-center"
+            >
+              <div className="flex justify-center mb-6">
+                <div className="flex gap-1">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
+                  ))}
+                </div>
+              </div>
+              <blockquote className="text-lg sm:text-xl text-muted-foreground italic mb-6 leading-relaxed">
+                "Power Automations helped me turn 4 hours of manual bookings into 10 minutes of automated scheduling. 
+                It's like hiring a full-time assistant — but smarter."
+              </blockquote>
+              <div className="text-foreground font-semibold">
+                — Sarah D., Dental Clinic Owner
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
 
       {/* Automation Examples Section */}
       <section id="services" className="apple-section relative">
@@ -122,7 +162,7 @@ export default function Home() {
             className="text-center mb-16"
           >
             <h2 className="section-headline text-3xl sm:text-4xl mb-4">
-              Business Process Automation Solutions
+              What We Automate
             </h2>
             <p className="body-large text-lg text-muted-foreground max-w-3xl mx-auto">
               Discover how our custom automation solutions can transform your business operations. 
