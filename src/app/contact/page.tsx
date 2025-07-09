@@ -381,6 +381,17 @@ export default function ContactPage() {
             </motion.div>
           </div>
         </section>
+
+        {/* Footer */}
+        <footer className="py-12 relative bg-background/80 backdrop-blur-md border-t border-border/50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div className="text-center">
+              <p className="text-muted-foreground">
+                © 2025 Power Automations. All rights reserved.
+              </p>
+            </div>
+          </div>
+        </footer>
       </div>
     </>
   );

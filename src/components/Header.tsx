@@ -25,9 +25,9 @@ export function Header() {
       className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border/50"
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 md:justify-start">
+        <div className="flex items-center justify-between h-16 md:justify-center md:relative">
           {/* Logo - Icon only on mobile, full logo on desktop */}
-          <Link href="/" className="flex items-center">
+          <Link href="/" className="flex items-center md:absolute md:left-0">
             <div className="md:hidden">
               <Logo size="md" showText={false} />
             </div>
@@ -37,7 +37,7 @@ export function Header() {
           </Link>
 
           {/* Desktop Navigation - Centered */}
-          <nav className="hidden md:flex items-center justify-center flex-1 space-x-8">
+          <nav className="hidden md:flex items-center justify-center space-x-8">
             {navItems.map((item) => (
               <Link
                 key={item.name}
@@ -50,7 +50,7 @@ export function Header() {
           </nav>
 
           {/* Desktop CTA Button */}
-          <div className="hidden md:flex items-center">
+          <div className="hidden md:flex items-center md:absolute md:right-0">
             <Link href="/contact">
               <Button
                 className="premium-button bg-primary hover:bg-primary/90 text-primary-foreground"
