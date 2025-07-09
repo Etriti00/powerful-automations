@@ -140,8 +140,8 @@ export default function Home() {
                 </div>
               </div>
               <blockquote className="text-lg sm:text-xl text-muted-foreground italic mb-6 leading-relaxed">
-                "Power Automations helped me turn 4 hours of manual bookings into 10 minutes of automated scheduling. 
-                It's like hiring a full-time assistant — but smarter."
+                &ldquo;Power Automations helped me turn 4 hours of manual bookings into 10 minutes of automated scheduling. 
+                It&rsquo;s like hiring a full-time assistant — but smarter.&rdquo;
               </blockquote>
               <div className="text-foreground font-semibold">
                 — Sarah D., Dental Clinic Owner
